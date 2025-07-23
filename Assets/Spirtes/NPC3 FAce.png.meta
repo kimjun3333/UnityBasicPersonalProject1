@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 087ed746919d487459e848985ca29694
+guid: b1682c62ab6b6b04781a9805cd094dc7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RYUFACE_0
+      name: NPC3 FAce_0
       rect:
         serializedVersion: 2
-        x: 11
+        x: 4
         y: 128
-        width: 108
-        height: 107
+        width: 120
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,41 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd43cf7ad50fcbc42811e2056ad93d94
-      internalID: -755415915
+      spriteID: 436065871c26b2444ac2b818f911cd6d
+      internalID: -1746048418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RYUFACE_1
+      name: NPC3 FAce_1
       rect:
         serializedVersion: 2
-        x: 139
-        y: 128
-        width: 108
-        height: 107
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48b2270d193ea4e4a94c3a8f18b84a30
-      internalID: -1047511618
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: RYUFACE_2
-      rect:
-        serializedVersion: 2
-        x: 11
+        x: 4
         y: 0
-        width: 108
-        height: 107
+        width: 120
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a8cf7e7a51013541b55ea13c13eefa5
-      internalID: -1068884677
+      spriteID: 3fd685698660eaa43a51efa2cd775000
+      internalID: 1102842508
       vertices: []
       indices: 
       edges: []
@@ -183,9 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RYUFACE_0: -755415915
-      RYUFACE_1: -1047511618
-      RYUFACE_2: -1068884677
+      NPC3 FAce_0: -1746048418
+      NPC3 FAce_1: 1102842508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

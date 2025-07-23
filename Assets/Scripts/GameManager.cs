@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // 이름 추후 변경 예정.
+
     public TalkManager talkManager;
     public GameObject talkBox;
     public Text talkText;
@@ -43,12 +45,23 @@ public class GameManager : MonoBehaviour
         {
             talkText.text = talkData;
             SetImage(interaction);
+            SetName(interaction);
         }
         else
         {
             //추가 예정
         }
     }
+    private void SetName(Interaction interaction)
+    {
+        nameText.text = interaction.name;
+    }
+
+    //private string GetName(Interaction interaction)
+    //{
+    //    return interaction.name;
+    //}
+
     private void SetImage(Interaction interaction)
     {
         Sprite sprite = GetImage(interaction);
