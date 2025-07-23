@@ -5,12 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rigid;
-    
-    public float speed = 2f;
-
     Animator anim;
+    Vector3 dirVec;
+    GameObject scanObj;
 
-    bool isHorizonMove;
+    private float speed = 5f;
 
     void Start()
     {
@@ -22,27 +21,62 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        FindObj();
+        Action();
     }
 
-    private void Move() //이동 로직꾸
+    private void Move() //이동 로직
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
         rigid.velocity = new Vector2(h, v) * speed;
 
-
         if (v < 0)
+        {
             anim.SetInteger("Move", 0);
+            dirVec = Vector3.down;
+        }      
         else if (v > 0)
+        {
             anim.SetInteger("Move", 1);
+            dirVec = Vector3.up;
+        }        
         else if (h < 0)
+        {
             anim.SetInteger("Move", 2);
+            dirVec = Vector3.left;
+        }        
         else if (h > 0)
+        {
             anim.SetInteger("Move", 3);
-
-        
+            dirVec = Vector3.right;
+        }        
     }
 
+    private void Action()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if(scanObj != null)
+            {
+                Debug.Log(scanObj.name);
+            }
+        }
+    }
 
+    private void FindObj() // Ray로 Obj 탐색
+    {
+        Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0, 1, 0));
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("NPC"));
+
+        if (rayHit.collider != null)
+        {
+            scanObj = rayHit.collider.gameObject;
+        }
+        else
+        {
+            scanObj = null;
+        }
+    }
 }
