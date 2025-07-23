@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("스페이스바 눌림");
             if(scanObj != null)
             {
                 Debug.Log(scanObj.name);
