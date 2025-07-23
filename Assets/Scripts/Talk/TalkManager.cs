@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class TalkManager : MonoBehaviour
 {
     // 이름 추후 변경 예정.
 
-    public TalkManager talkManager;
+    public TalkDataBase talkManager;
     public GameObject talkBox;
     public Text talkText;
     public Text nameText;
@@ -56,11 +56,6 @@ public class GameManager : MonoBehaviour
     {
         nameText.text = interaction.name;
     }
-
-    //private string GetName(Interaction interaction)
-    //{
-    //    return interaction.name;
-    //}
 
     private void SetImage(Interaction interaction)
     {
