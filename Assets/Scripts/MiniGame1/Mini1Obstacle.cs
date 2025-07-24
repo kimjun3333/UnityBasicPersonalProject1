@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mini1Obstacle : MonoBehaviour
 {
+    Mini1GameManager gameManager;
+
     public float highPosY = 1f;
     public float lowPosY = -1f;
 
@@ -15,12 +17,17 @@ public class Mini1Obstacle : MonoBehaviour
 
     public float widthPadding = 6f;
 
-
-    //게임매니저
-
-    private void Start()
+    public Mini1GameManager GameManager
     {
-        //게임매니저
+        get { return gameManager; }
+    }
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<Mini1GameManager>();
+
+        if (gameManager == null)
+            Debug.LogError("gameManager is Null");
     }
 
     public Vector3 SetRandomPlace(Vector3 lastPositon, int obstacleCount)
@@ -39,9 +46,13 @@ public class Mini1Obstacle : MonoBehaviour
         return placePosition;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        //점수얻는 로직
+        Mini1Player Player = collision.GetComponent<Mini1Player>();
+        if (Player != null)
+        {
+            gameManager.AddScore(1);
+        }
     }
 }
 

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Mini1Player : MonoBehaviour
 {
-    Animator animator;
+    Animator animator; // isDie Anim
     Rigidbody2D rigid;
+    Mini1GameManager gameManager;
 
     public float flapForce = 6f;
     public float forwardSpeed = 3f;
@@ -15,6 +16,19 @@ public class Mini1Player : MonoBehaviour
 
     public bool isFlap = false;
     public bool GodMode = false;
+
+    public Mini1GameManager GameManager
+    {
+        get { return gameManager; }
+    }
+
+    private void Awake()
+    {
+       gameManager = FindObjectOfType<Mini1GameManager>();
+
+        if (gameManager == null)
+            Debug.LogError("gameManager is Null");
+    }
 
     private void Start()
     {
@@ -35,7 +49,7 @@ public class Mini1Player : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                 {
-                    //게임매니저 다시시작
+                    gameManager.RestartGame();
                 }
             }
             else
@@ -80,7 +94,13 @@ public class Mini1Player : MonoBehaviour
         isDead = true;
         deathCooldown = 1f;
 
-        //게임 매니저 게임오버
         //애니메이터 isDIe 사용시 넣기
+        animator.SetBool("isDie", true);
+
+        rigid.constraints &= ~RigidbodyConstraints2D.FreezeRotation; //z축 Freeze 풀기
+
+        //게임 매니저 게임오버
+        gameManager.GameOver();
+        
     }
 }
