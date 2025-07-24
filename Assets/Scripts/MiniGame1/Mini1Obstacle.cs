@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Mini1Obstacle : MonoBehaviour
 {
-    public float highPosY = 4f;
-    public float lowPosY = -4f;
+    public float highPosY = 1f;
+    public float lowPosY = -1f;
 
-    public float holeSizeMin = 5f;
-    public float holesizeMax = 8f;
+    public float holeSizeMin = 1f;
+    public float holesizeMax = 2f;
 
     public Transform TopObject;
     public Transform BottomObject;
 
-    public float widthPadding = 4f;
+    public float widthPadding = 6f;
 
 
     //게임매니저

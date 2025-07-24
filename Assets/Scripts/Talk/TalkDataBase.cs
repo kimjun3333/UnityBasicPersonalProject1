@@ -20,6 +20,11 @@ public class TalkDataBase : MonoBehaviour
     
     public string GetData(int id, int talkIndex)
     {
-        return talkData[id][talkIndex];
+        if(talkData.ContainsKey(id) && talkIndex < talkData[id].Length)
+        {
+            return talkData[id][talkIndex];
+        }
+
+        return null;
     }
 }

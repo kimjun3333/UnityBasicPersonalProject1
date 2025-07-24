@@ -6,7 +6,7 @@ public class Mini1BgLooper : MonoBehaviour
 {
     public int obstacleCount = 0;
     public Vector3 obstacleLastPosition = Vector3.zero;
-    public int numBgCount = 5;
+    public int numBgCount = 6;
 
     private void Start()
     {
@@ -22,11 +22,9 @@ public class Mini1BgLooper : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered" + collision.name);
-
         if(collision.CompareTag("Mini1BG"))
         {
-            float widthOfBgObject = ((BoxCollider2D)collision).size.x;
+            float widthOfBgObject = ((BoxCollider2D)collision).size.x * collision.transform.lossyScale.x;
             Vector3 pos = collision.transform.position;
 
             pos.x += widthOfBgObject * numBgCount;

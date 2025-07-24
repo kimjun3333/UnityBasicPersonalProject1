@@ -9,4 +9,5 @@ public class Interaction : MonoBehaviour
     public int id;
     public bool isNPC;
     public Sprite characterImage;
+    public int talkOrder = 0;
 }

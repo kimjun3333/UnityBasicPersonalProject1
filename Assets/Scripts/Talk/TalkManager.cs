@@ -19,7 +19,7 @@ public class TalkManager : MonoBehaviour
     public GameObject scanObject;
 
     public bool isAction;
-    public int talkIndex;
+    //public int talkIndex;
 
     public void Action(GameObject scanObj)
     {
@@ -39,8 +39,16 @@ public class TalkManager : MonoBehaviour
 
     private void Talk(int id, bool isNPC)
     {
-        string talkData = talkManager.GetData(id, talkIndex);
+        string talkData = talkManager.GetData(id, interaction.talkOrder);
 
+        if(talkData == null)
+        {
+            interaction.talkOrder = 0;
+            isAction = false;
+            talkBox.SetActive(false);
+            return;
+
+        }
         if(isNPC)
         {
             talkText.text = talkData;
@@ -51,6 +59,9 @@ public class TalkManager : MonoBehaviour
         {
             //추가 예정
         }
+
+        interaction.talkOrder++;
+
     }
     private void SetName(Interaction interaction)
     {
