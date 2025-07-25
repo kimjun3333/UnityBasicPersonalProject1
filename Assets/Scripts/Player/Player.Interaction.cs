@@ -11,7 +11,21 @@ public partial class Player
             Debug.Log("스페이스바 눌림");
             if (scanObj != null)
             {
-                talkManager.Action(scanObj);
+                if(!talkManager.isAction) // Action이 아닐때
+                {
+                    talkManager.Action(scanObj);
+                }
+                else
+                {
+                    talkManager.NextTalk();
+                }         
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(talkManager.isAction)
+            {
+                talkManager.EndTalk();
             }
         }
     }
