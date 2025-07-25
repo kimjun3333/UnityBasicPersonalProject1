@@ -14,6 +14,8 @@ public class TalkManager : MonoBehaviour
     public GameObject scanObject;
     public bool isAction;
 
+    public QuestManager questManager;
+
     public void Subscribe(ITalkObserver talkObserver)
     {
         if (!talkObservers.Contains(talkObserver))
@@ -65,6 +67,7 @@ public class TalkManager : MonoBehaviour
         if (isNPC)
         {
             Notify(talkData, interaction.name, interaction.characterImage, true);
+            CheckQuest();
         }
         else
         {
@@ -88,5 +91,31 @@ public class TalkManager : MonoBehaviour
             return;
        
         StartTalk(interaction.id, interaction.isNPC);
+    }
+
+    public void CheckQuest()
+    {
+        if(interaction.talkOrder == 1 && interaction.id == 1000)
+        {
+            Quest newQuest = new Quest
+            {
+                questName = "류동균과 대화하기",
+                questType = EventBus.QuestType.Talking,
+                targetID = interaction.id + 10,
+                isComplete = false
+
+                
+            };
+
+            questManager.ReceiveQuest(newQuest);
+
+            interaction.id += 10;
+
+            return;
+        }
+        if(interaction.id == 1010)
+        {
+            questManager.CompleteQuest(EventBus.QuestType.Talking, 1010);
+        }
     }
 }
