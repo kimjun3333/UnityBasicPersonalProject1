@@ -8,6 +8,7 @@ public class TalkDataBase : MonoBehaviour
     void Start()
     {
         talkData = new Dictionary<int, string[]>();
+
         CallData();
     }
 
@@ -19,7 +20,6 @@ public class TalkDataBase : MonoBehaviour
         talkData.Add(1200, new string[] { "«œ¿Ãø∞" , "æ»≥Á«œººø‰ π›∞©Ω¿¥œ¥Ÿ." });
         talkData.Add(1300, new string[] { "«œ¿Ãø∞", "æ»≥Á«œººø‰ π›∞©Ω¿¥œ¥Ÿ." });
         talkData.Add(1400, new string[] { "¿˛¿∫«« ¿‘¥œ¥Ÿ.", "«œ¿Ã∑Í" });
-
     }
     
     public string GetData(int id, int talkIndex)
@@ -28,8 +28,6 @@ public class TalkDataBase : MonoBehaviour
         {
             return talkData[id][talkIndex];
         }
-
-
         return null;
     }
 }
