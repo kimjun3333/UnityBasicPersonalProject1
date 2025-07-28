@@ -6,6 +6,11 @@ public class FollowCamera : MonoBehaviour
 {
     public Transform target;
 
+    public float minX;
+    public float maxX;
+    public float minY;
+    public float maxY;
+
     float offsetX;
     float offsetY;
 
@@ -28,7 +33,12 @@ public class FollowCamera : MonoBehaviour
         Vector3 pos = transform.position;
         pos.x = target.transform.position.x + offsetX;
         pos.y = target.transform.position.y + offsetY;
+        
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
         pos.z = transform.position.z;
+
         transform.position = pos;  
     }
 }

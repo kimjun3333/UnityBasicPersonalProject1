@@ -8,6 +8,8 @@ public class Mini1GameManager : MonoBehaviour
     private int currentScore = 0;
     Mini1UIManager uiManager;
 
+    public int highScore = 0;
+
     public Mini1UIManager UIManager
     {
         get { return uiManager; }
@@ -24,6 +26,9 @@ public class Mini1GameManager : MonoBehaviour
     private void Start()
     {
         uiManager.UpdateScore(0);
+
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        uiManager.UpdateHighScore(highScore);
     }
 
     public void GameOver()
@@ -35,7 +40,7 @@ public class Mini1GameManager : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("다시시작");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainScene");
     }
 
     public void AddScore(int score)
@@ -43,6 +48,13 @@ public class Mini1GameManager : MonoBehaviour
         currentScore += score;
         uiManager.UpdateScore(currentScore);
         Debug.Log("점수" + currentScore);
+
+        if(currentScore > highScore)
+        {
+            highScore = currentScore;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            uiManager.UpdateHighScore(highScore);
+        }
     }
 
 }

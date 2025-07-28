@@ -58,6 +58,7 @@ public class QuestManager : MonoBehaviour
             }
         }
     }
+
     private void OnEnable()
     {
         EventBus.Register(EventBus.QuestType.Talking, OnTalking);
